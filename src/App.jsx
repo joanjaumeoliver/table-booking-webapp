@@ -1,21 +1,36 @@
 import React from 'react';
 import Header from './components/Header';
-import Hero from './components/Hero';
-import Highlights from './components/Highlights';
-import Testimonials from './components/Testimonials';
-import About from './components/About';
 import Footer from './components/Footer';
+import Home from './pages/Home';
+import Reservation from './pages/Reservation';
+import ComingSoon from './pages/ComingSoon';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+const appStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  minHeight: '100vh',
+};
+
+const mainStyle = {
+  flex: 1,
+};
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
+    <div style={appStyle}>
       <Header />
-      <Hero />
-      <Highlights />
-      <Testimonials />
-      <About />
+      <main style={mainStyle}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="reservation" element={<Reservation />} />
+          <Route path="coming-soon" element={<ComingSoon />} />
+        </Routes>
+      </main>
       <Footer />
-    </>
+    </div>
+  </BrowserRouter>
   );
 }
 

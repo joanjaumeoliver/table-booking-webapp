@@ -28,12 +28,12 @@ const Header = () => {
      <img src="logo.png" alt="Little Lemon Logo"/>
      <nav>
      <ul style={navStyle}>
-          <li><Link to="/home" style={linkStyle}>HOME</Link></li>
-          <li><Link to="/about" style={linkStyle}>ABOUT</Link></li>
-          <li><Link to="/menu" style={linkStyle}>MENU</Link></li>
+          <li><Link to="/" style={linkStyle}>HOME</Link></li>
+          <li><Link to="/coming-soon" style={linkStyle}>ABOUT</Link></li>
+          <li><Link to="/coming-soon" style={linkStyle}>MENU</Link></li>
           <li><Link to="/reservations" style={linkStyle}>RESERVATIONS</Link></li>
-          <li><Link to="/order" style={linkStyle}>ORDER ONLINE</Link></li>
-          <li><Link to="/login" style={linkStyle}>LOGIN</Link></li>
+          <li><Link to="/coming-soon" style={linkStyle}>ORDER ONLINE</Link></li>
+          <li><Link to="/coming-soon" style={linkStyle}>LOGIN</Link></li>
         </ul>
       </nav>
     </header>
