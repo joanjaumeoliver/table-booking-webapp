@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import banner_logo from '../images/banner.jpg'
 
 const heroStyle = {
   display: 'flex',
@@ -28,7 +29,7 @@ function Hero() {
         <button aria-label="on Click ">Reserve Table</button>
       </Link>
     </div>
-    <img src='banner.jpg' alt="banner-image" />
+    <img src={banner_logo} alt="banner-image" style={{width: "20vw"}}/>
   </section>
   );
 }
