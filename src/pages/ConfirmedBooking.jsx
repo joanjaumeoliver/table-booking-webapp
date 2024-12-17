@@ -1,12 +1,30 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const ConfirmedBooking = () => {
   return (
     <div style={containerStyle}>
-    <h1 style={headingStyle}>Your booking has been confirmed!!</h1>
+    <h1 style={headingStyle}>Your booking has been confirmed!</h1>
     <p style={paragraphStyle}>Thank you for booking with us. We look forward to your visit.</p>
+    <Link to="/">
+          <button aria-label="Reserve a table" style={buttonStyle}>Back to Home</button>
+        </Link>
   </div>
   );
+};
+
+const buttonStyle = {
+  margin: '30px',
+  padding: '5px 20px',
+  fontSize: '2rem',
+  border: 'none',
+  cursor: 'pointer',
+  textDecoration: 'none',
+  fontWeight: '200',
+  color: 'black',
+  borderRadius: '16px',
+  fontFamily: 'Markazi Text, serif',
+  backgroundColor: '#F4CE14',
 };
 
 const containerStyle = {

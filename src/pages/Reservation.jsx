@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { submitAPI } from '../api/api';
+import { useNavigate } from 'react-router';
 
 const BookingForm = ({ availableTimes, updateTimes }) => {
+  const navigate = useNavigate();
+
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [guests, setGuests] = useState(1);
@@ -21,6 +25,15 @@ const BookingForm = ({ availableTimes, updateTimes }) => {
     console.log('Booking Time:', time);
     console.log('Number of Guests:', guests);
     console.log('Occasion:', occasion);
+    // Assuming submitAPI is asynchronous, await the result
+    const result = submitAPI({ date, time, guests, occasion });
+
+    if (result) {
+      // Automatically navigate to the success page
+      navigate('/confirmed-booking');
+    } else {
+      console.log('Submission failed');
+    }
   };
 
   return (

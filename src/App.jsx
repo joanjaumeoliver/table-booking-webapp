@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import './App.css';
 
 import { fetchAPI } from './api/api'
+import ConfirmedBooking from './pages/ConfirmedBooking';
 
 export const availableTimesReducer = (state, action) => {
   switch (action.type) {
@@ -51,6 +52,7 @@ const App = () => {
               element={<Reservation availableTimes={availableTimes} updateTimes={(date) => updateTimes(dispatch, date)} />}
             />
             <Route path="coming-soon" element={<ComingSoon />} />
+            <Route path="confirmed-booking" element={<ConfirmedBooking/>}/>
           </Routes>
         </main>
         <Footer />
