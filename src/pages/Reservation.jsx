@@ -9,6 +9,7 @@ const BookingForm = ({ availableTimes, updateTimes }) => {
   const [time, setTime] = useState('');
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState('');
+  const [isFormValid, setIsFormValid] = useState(false); // Track form validity
 
   const prevDateRef = React.useRef();
 
@@ -19,12 +20,25 @@ const BookingForm = ({ availableTimes, updateTimes }) => {
       setTime(availableTimes[0]);
     }
   }, [date, availableTimes, updateTimes]);
+
+  useEffect(() => {
+    // Check if all fields are valid
+    const isValid =
+      date &&
+      time &&
+      guests >= 1 &&
+      guests <= 10 &&
+      occasion !== '';
+    setIsFormValid(isValid);
+  }, [date, time, guests, occasion]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Booking Date:', date);
     console.log('Booking Time:', time);
     console.log('Number of Guests:', guests);
     console.log('Occasion:', occasion);
+    
     // Assuming submitAPI is asynchronous, await the result
     const result = submitAPI({ date, time, guests, occasion });
 
@@ -37,7 +51,7 @@ const BookingForm = ({ availableTimes, updateTimes }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={formStyle}>
+    <form onSubmit={handleSubmit} style={isFormValid ? formStyleValid : formStyle}>
       <label htmlFor="res-date" style={labelStyle}>Choose date</label>
       <input
         type="date"
@@ -87,11 +101,15 @@ const BookingForm = ({ availableTimes, updateTimes }) => {
         <option value="Anniversary">Anniversary</option>
       </select>
 
-      <input type="submit" value="Make Your Reservation" style={submitButtonStyle} />
+      <input
+        type="submit"
+        value="Make Your Reservation"
+        style={isFormValid ? submitButtonStyleValid : submitButtonStyle}
+        disabled={!isFormValid} // Disable the button if the form is invalid
+      />
     </form>
   );
 };
-
 
 const formStyle = {
   display: 'grid',
@@ -102,6 +120,18 @@ const formStyle = {
   border: '1px solid #ccc',
   borderRadius: '8px',
   boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+  marginBottom: '40px',
+};
+
+const formStyleValid = {
+  display: 'grid',
+  maxWidth: '300px',
+  gap: '20px',
+  margin: '0 auto',
+  padding: '20px',
+  border: '1px solid #F4CE14',
+  borderRadius: '8px',
+  boxShadow: '0 2px 8px rgba(128, 60, 0, 0.1)', // Green shadow for valid form
   marginBottom: '40px',
 };
 
@@ -121,12 +151,25 @@ const inputStyle = {
 
 const submitButtonStyle = {
   padding: '10px 20px',
-  fontSize: '16px',
   border: 'none',
-  borderRadius: '4px',
+  borderRadius: '16px',
   cursor: 'pointer',
   backgroundColor: '#f0f0f0',
-  fontWeight: 'bold',
+  fontFamily: 'Markazi Text, serif',
+  fontSize: '1.25rem',
+  fontWeight: '400',
+};
+
+const submitButtonStyleValid = {
+  padding: '10px 20px',
+  fontSize: '1.25rem',
+  fontWeight: '400',
+  border: 'none',
+  cursor: 'pointer',
+  color: 'black',
+  borderRadius: '16px',
+  fontFamily: 'Markazi Text, serif',
+  backgroundColor: '#F4CE14',
 };
 
 export default BookingForm;
