@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const BookingForm = () => {
-  // Define state for form fields
+const BookingForm = ({ availableTimes, updateTimes }) => {
+
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState('');
-  const [availableTimes] = useState([
-    '17:00', '18:00', '19:00', '20:00', '21:00', '22:00'
-  ]);
 
-  // Handle form submission
+  useEffect(() => {
+    if (date) {
+      updateTimes(date);
+    }
+  }, [date, updateTimes]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add form submission logic here, like sending data to an API
     console.log('Booking Date:', date);
     console.log('Booking Time:', time);
     console.log('Number of Guests:', guests);
@@ -76,21 +77,19 @@ const BookingForm = () => {
   );
 };
 
-// CSS styles (without color) with added space at the bottom
 const formStyle = {
   display: 'grid',
   maxWidth: '300px',
   gap: '20px',
-  margin: '0 auto', // Centering the form
+  margin: '0 auto',
   padding: '20px',
-  border: '1px solid #ccc', // Border around the form
-  borderRadius: '8px', // Rounded corners
-  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)', // Subtle shadow
-  marginBottom: '40px', // Adds extra space at the bottom of the form
+  border: '1px solid #ccc',
+  borderRadius: '8px',
+  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+  marginBottom: '40px',
 };
 
 const labelStyle = {
-  fontWeight: 'bold',
   marginBottom: '8px',
   fontSize: '1.5rem',
   fontWeight: '500',
