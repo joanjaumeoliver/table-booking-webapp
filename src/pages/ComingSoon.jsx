@@ -6,19 +6,19 @@ const ComingSoon = () => {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '50vh', // Full height of the viewport
+    height: '40vh',
     textAlign: 'center',
     padding: '20px',
   };
 
   const headingStyle = {
-    fontSize: '8vw', // Responsive font size based on the viewport width
+    fontSize: '10vh',
     marginBottom: '20px',
   };
 
   const paragraphStyle = {
-    fontSize: '3vw', // Responsive font size for paragraph
-    maxWidth: '600px', // Optional max width for better readability
+    fontSize: '5vh',
+    maxWidth: '600px',
     margin: '0 auto',
   };
 

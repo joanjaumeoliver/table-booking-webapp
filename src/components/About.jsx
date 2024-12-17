@@ -1,34 +1,23 @@
 import React from 'react';
+import { sectionStyle, headingStyle } from '../styles';
 
 function About() {
-  const sectionStyle = {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '20px',
-    margin: '0 auto',
-    maxWidth: '1200px',
-    gap: '20px',
-  };
 
   const textStyle = {
-    flex: 1,
-    textAlign: 'left',
+    textAlign: 'center',
     fontSize: '1.1rem',
-    maxWidth: '600px',
+    maxWidth: '35vw',
   };
 
   const imageStyle = {
-    flex: 1,
     width: '100%',
     height: 'auto',
     borderRadius: '8px',
   };
 
-  const headingStyle = {
-    fontSize: '2rem',
-    marginBottom: '20px',
+  const imagecontainerStyle = {
+    display: 'flex',
+    justifyContent: 'center',
   };
 
   return (
@@ -37,7 +26,9 @@ function About() {
         <h2 style={headingStyle}>About Little Lemon</h2>
         <p>Little Lemon was founded in [year]. We focus on fresh, local ingredients and provide an exceptional dining experience. Our passion for food is reflected in every dish we serve.</p>
       </div>
-      <img src="restaurant-photo.jpg" alt="Little Lemon Interior" style={imageStyle} />
+      <div style={imagecontainerStyle}>
+        <img src="restaurant-photo.jpg" alt="Little Lemon Interior" style={imageStyle} />
+      </div>
     </section>
   );
 }

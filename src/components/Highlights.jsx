@@ -1,23 +1,10 @@
 import React from 'react';
+import { sectionStyle, headingStyle } from '../styles';
+import Dish1 from '../images/greek salad.jpg';
+import Dish2 from '../images/salad2.png';
+import Dish3 from '../images/desert.jpg';
 
 function Highlights() {
-  const sectionStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    padding: '20px',
-    margin: '0 auto',
-    maxWidth: '1200px',
-  };
-
-  const headingStyle = {
-    fontSize: '2rem',
-    marginBottom: '20px',
-    display: 'flex',
-    justifyContent: 'space-between',
-    width: '100%',
-    alignItems: 'center',
-  };
 
   const highlightListStyle = {
     display: 'flex',
@@ -41,37 +28,41 @@ function Highlights() {
 
   const imageStyle = {
     width: '100%',
-    height: 'auto',
+    height: '15vh',        // Set the height to the max height
     marginBottom: '10px',
     borderRadius: '8px',
   };
 
   const h3Style = {
-    fontSize: '1.25rem',
+    fontSize: '1.5rem',
+    fontWeight: '500',
     margin: '10px 0',
     position: 'relative',
     display: 'inline-block',
   };
 
   const pStyle = {
-    fontSize: '1rem',
+    fontSize: '1.25rem',
+    fontWeight: '500',
     marginBottom: '10px',
   };
 
   const priceStyle = {
-    fontSize: '1.1rem',
-    fontWeight: 'bold',
+    fontSize: '1.4rem',
+    fontWeight: '500',
     marginBottom: '15px',
   };
 
   const orderButtonStyle = {
     padding: '10px 20px',
-    fontSize: '1rem',
-    backgroundColor: '#333',
-    color: '#fff',
+    fontSize: '1.25rem',
     border: 'none',
-    borderRadius: '5px',
     cursor: 'pointer',
+    fontWeight: '200',
+    color: 'black',
+    borderRadius: '16px',
+    fontFamily: 'Markazi Text, serif',
+    backgroundColor: '#F4CE14',
   };
 
   return (
@@ -81,30 +72,30 @@ function Highlights() {
       </div>
       <div style={highlightListStyle}>
         <article style={highlightItemStyle}>
-          <img src="special-dish1.jpg" alt="Dish 1" style={imageStyle} />
+          <img src={Dish1} alt="Greek Salad" style={imageStyle} />
           <h3 style={h3Style}>
-            Dish Name 1
+            Greek Salad
           </h3>
-          <p style={pStyle}>A delicious blend of flavors and textures.</p>
+          <p style={pStyle}>A delicious blend of flavors.</p>
           <p style={priceStyle}>$19.99</p>
           <button style={orderButtonStyle}>Order for Delivery</button>
         </article>
         <article style={highlightItemStyle}>
-          <img src="special-dish2.jpg" alt="Dish 2" style={imageStyle} />
+          <img src={Dish2} alt="Orange Salad" style={imageStyle} />
           <h3 style={h3Style}>
-            Dish Name 2
+            Orange Salad
           </h3>
           <p style={pStyle}>Fresh ingredients and vibrant flavors.</p>
           <p style={priceStyle}>$22.99</p>
           <button style={orderButtonStyle}>Order for Delivery</button>
         </article>
         <article style={highlightItemStyle}>
-          <img src="special-dish3.jpg" alt="Dish 3" style={imageStyle} />
+          <img src={Dish3} alt="Cake" style={imageStyle} />
           <h3 style={h3Style}>
-            Dish Name 3
+            Cake
           </h3>
           <p style={pStyle}>Something new and delicious.</p>
-          <p style={priceStyle}>$18.50</p>
+          <p style={priceStyle}>$8.50</p>
           <button style={orderButtonStyle}>Order for Delivery</button>
         </article>
       </div>

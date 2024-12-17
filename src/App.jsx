@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Reservation from './pages/Reservation';
 import ComingSoon from './pages/ComingSoon';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import './App.css';
 
 const appStyle = {
   display: 'flex',
