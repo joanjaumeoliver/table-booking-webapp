@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import banner_logo from '../images/banner.jpg';
 
 const heroStyle = {

@@ -4,10 +4,10 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Reservation from './pages/Reservation';
 import ComingSoon from './pages/ComingSoon';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router";
 import './App.css';
 
-const availableTimesReducer = (state, action) => {
+export const availableTimesReducer = (state, action) => {
   switch (action.type) {
     case 'UPDATE_TIMES':
       return [
@@ -18,7 +18,7 @@ const availableTimesReducer = (state, action) => {
   }
 };
 
-const initializeTimes = () => [
+export const initializeTimes = () => [
   '17:00', '18:00', '19:00', '20:00', '21:00', '22:00'
 ];
 
@@ -32,13 +32,12 @@ const mainStyle = {
   flex: 1,
 };
 
-function App() {
+export const updateTimes = (dispatch, date) => {
+  dispatch({ type: 'UPDATE_TIMES', date });
+};
 
+const App = () => {
   const [availableTimes, dispatch] = useReducer(availableTimesReducer, [], initializeTimes);
-
-  const updateTimes = (date) => {
-    dispatch({ type: 'UPDATE_TIMES', date });
-  };
 
   return (
     <BrowserRouter>
@@ -49,18 +48,15 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route
               path="reservation"
-              element={<Reservation availableTimes={availableTimes} updateTimes={updateTimes} />}
+              element={<Reservation availableTimes={availableTimes} updateTimes={(date) => updateTimes(dispatch, date)} />}
             />
-            <Route
-              path="coming-soon"
-              element={<ComingSoon />}
-            />
+            <Route path="coming-soon" element={<ComingSoon />} />
           </Routes>
         </main>
         <Footer />
       </div>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
