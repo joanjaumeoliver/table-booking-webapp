@@ -9,7 +9,7 @@ const BookingForm = ({ availableTimes, updateTimes }) => {
   const [time, setTime] = useState('');
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState('');
-  const [isFormValid, setIsFormValid] = useState(false); // Track form validity
+  const [isFormValid, setIsFormValid] = useState(false);
 
   const prevDateRef = React.useRef();
 
@@ -22,7 +22,6 @@ const BookingForm = ({ availableTimes, updateTimes }) => {
   }, [date, availableTimes, updateTimes]);
 
   useEffect(() => {
-    // Check if all fields are valid
     const isValid =
       date &&
       time &&
@@ -38,12 +37,10 @@ const BookingForm = ({ availableTimes, updateTimes }) => {
     console.log('Booking Time:', time);
     console.log('Number of Guests:', guests);
     console.log('Occasion:', occasion);
-    
-    // Assuming submitAPI is asynchronous, await the result
+
     const result = submitAPI({ date, time, guests, occasion });
 
     if (result) {
-      // Automatically navigate to the success page
       navigate('/confirmed-booking');
     } else {
       console.log('Submission failed');
