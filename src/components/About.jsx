@@ -5,7 +5,8 @@ function About() {
 
   const textStyle = {
     textAlign: 'center',
-    fontSize: '1.1rem',
+    fontSize: '1.25rem',
+    fontWeight: '400',
     maxWidth: '35vw',
   };
 
