@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -7,20 +7,16 @@ import ComingSoon from './pages/ComingSoon';
 import { BrowserRouter, Routes, Route } from "react-router";
 import './App.css';
 
+import { fetchAPI } from './api/api';
+
 export const availableTimesReducer = (state, action) => {
   switch (action.type) {
     case 'UPDATE_TIMES':
-      return [
-        '17:00', '18:00', '19:30', '20:00', '21:00', '22:00'
-      ];
+      return action.availableTimes; // Update the available times with the payload
     default:
       return state;
   }
 };
-
-export const initializeTimes = () => [
-  '17:00', '18:00', '19:00', '20:00', '21:00', '22:00'
-];
 
 const appStyle = {
   display: 'flex',
@@ -33,11 +29,25 @@ const mainStyle = {
 };
 
 export const updateTimes = (dispatch, date) => {
-  dispatch({ type: 'UPDATE_TIMES', date });
+  try {
+    const availableTimes = fetchAPI(new Date(date));
+    dispatch({ type: 'UPDATE_TIMES', availableTimes });
+  } catch (error) {
+    console.error('Failed to fetch available times', error);
+  }
 };
 
 const App = () => {
-  const [availableTimes, dispatch] = useReducer(availableTimesReducer, [], initializeTimes);
+  const [availableTimes, dispatch] = useReducer(availableTimesReducer, []);
+
+  useEffect(() => {
+    const fetchInitialTimes = () => {
+      const times = fetchAPI(new Date());
+      dispatch({ type: 'UPDATE_TIMES', availableTimes: times });
+    };
+
+    fetchInitialTimes();
+  }, []);
 
   return (
     <BrowserRouter>

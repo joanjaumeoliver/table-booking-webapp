@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
 
 const BookingForm = ({ availableTimes, updateTimes }) => {
-
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState('');
 
-  useEffect(() => {
-    if (date) {
-      updateTimes(date);
-    }
-  }, [date, updateTimes]);
+  const prevDateRef = React.useRef();
 
+  useEffect(() => {
+    if (date && date !== prevDateRef.current) {
+      updateTimes(date);
+      prevDateRef.current = date;
+      setTime(availableTimes[0]);
+    }
+  }, [date, availableTimes, updateTimes]);
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Booking Date:', date);
@@ -76,6 +78,7 @@ const BookingForm = ({ availableTimes, updateTimes }) => {
     </form>
   );
 };
+
 
 const formStyle = {
   display: 'grid',
