@@ -10,7 +10,7 @@ const heroStyle = {
   padding: '5rem',
   flexWrap: 'wrap',
   textAlign: 'center',
-  backgroundColor: '#495E57'
+  backgroundColor: '#495E57',
 };
 
 const heroTextStyle = {
@@ -27,7 +27,7 @@ const headingStyle = {
   margin: '0',
   color: '#F4CE14',
   fontWeight: '200',
-  fontFamily: 'Markazi Text, serif'
+  fontFamily: 'Markazi Text, serif',
 };
 
 const subheadingStyle = {
@@ -35,7 +35,7 @@ const subheadingStyle = {
   margin: '10px 0',
   color: '#FFFFFF',
   fontWeight: '200',
-  fontFamily: 'Markazi Text, serif'
+  fontFamily: 'Markazi Text, serif',
 };
 
 const paragraphStyle = {
@@ -43,7 +43,7 @@ const paragraphStyle = {
   margin: '20px 0',
   color: '#FFFFFF',
   fontWeight: '200',
-  fontFamily: 'Markazi Text, serif'
+  fontFamily: 'Markazi Text, serif',
 };
 
 const buttonStyle = {
@@ -69,19 +69,19 @@ const imageStyle = {
 
 function Hero() {
   return (
-    <section style={heroStyle}>
+    <section style={heroStyle} aria-labelledby="hero-heading">
       <div style={heroTextStyle}>
-        <h2 style={headingStyle}>Little Lemon</h2>
-        <h3 style={subheadingStyle}>Chicago</h3>
+        <h1 id="hero-heading" style={headingStyle}>Little Lemon</h1>
+        <h2 style={subheadingStyle}>Chicago</h2>
         <p style={paragraphStyle}>
           We are a family-owned Mediterranean restaurant, focused on
           traditional recipes served with a modern twist.
         </p>
-        <Link to="/reservation">
-          <button aria-label="Reserve a table" style={buttonStyle}>Reserve Table</button>
+        <Link to="/reservation" aria-label="Reserve a table">
+          <button style={buttonStyle}>Reserve Table</button>
         </Link>
       </div>
-      <img src={banner_logo} alt="banner-image" style={imageStyle} />
+      <img src={banner_logo} alt="A banner of Little Lemon restaurant" style={imageStyle} />
     </section>
   );
 }

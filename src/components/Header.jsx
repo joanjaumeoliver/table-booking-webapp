@@ -41,14 +41,12 @@ const linkStyle = {
 
 const imgStyle = {
   width: '10vw',
-  minWidth:'200px',
+  minWidth: '200px',
 };
-
 
 const hamburgerStyle = {
   fontSize: '1.5rem',
   cursor: 'pointer',
-  
 };
 
 const Header = () => {
@@ -57,7 +55,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth <= 900);
     };
 
     handleResize();
@@ -72,15 +70,26 @@ const Header = () => {
     setMenuOpen(!menuOpen);
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      toggleMenu();
+    }
+  };
+
   return (
     <header style={headerStyle}>
-      <img src={Logo} style={imgStyle} alt="Little Lemon Logo" />
+      <img src={Logo} style={imgStyle} alt="Little Lemon Restaurant Logo" />
       <nav>
         {/* Hamburger menu icon, visible only on mobile */}
         {isMobile && (
           <div
             style={hamburgerStyle}
             onClick={toggleMenu}
+            onKeyDown={handleKeyDown}
+            role="button"
+            tabIndex="0"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
           >
             ☰
           </div>
@@ -88,25 +97,29 @@ const Header = () => {
 
         {/* Mobile navigation menu */}
         {isMobile && (
-          <ul style={menuOpen ? navStyle(true) : navStyle(false)}>
-            <li><Link to="/" style={linkStyle}>HOME</Link></li>
-            <li><Link to="/coming-soon" style={linkStyle}>ABOUT</Link></li>
-            <li><Link to="/coming-soon" style={linkStyle}>MENU</Link></li>
-            <li><Link to="/reservation" style={linkStyle}>RESERVATIONS</Link></li>
-            <li><Link to="/coming-soon" style={linkStyle}>ORDER ONLINE</Link></li>
-            <li><Link to="/coming-soon" style={linkStyle}>LOGIN</Link></li>
+          <ul
+            id="mobile-menu"
+            style={menuOpen ? navStyle(true) : navStyle(false)}
+            role="menu"
+          >
+            <li role="menuitem"><Link to="/" style={linkStyle}>HOME</Link></li>
+            <li role="menuitem"><Link to="/coming-soon" style={linkStyle}>ABOUT</Link></li>
+            <li role="menuitem"><Link to="/coming-soon" style={linkStyle}>MENU</Link></li>
+            <li role="menuitem"><Link to="/reservation" style={linkStyle}>RESERVATIONS</Link></li>
+            <li role="menuitem"><Link to="/coming-soon" style={linkStyle}>ORDER ONLINE</Link></li>
+            <li role="menuitem"><Link to="/coming-soon" style={linkStyle}>LOGIN</Link></li>
           </ul>
         )}
 
         {/* Desktop navigation menu */}
         {!isMobile && (
-          <ul style={desktopNavStyle}>
-            <li><Link to="/" style={linkStyle}>HOME</Link></li>
-            <li><Link to="/coming-soon" style={linkStyle}>ABOUT</Link></li>
-            <li><Link to="/coming-soon" style={linkStyle}>MENU</Link></li>
-            <li><Link to="/reservation" style={linkStyle}>RESERVATIONS</Link></li>
-            <li><Link to="/coming-soon" style={linkStyle}>ORDER ONLINE</Link></li>
-            <li><Link to="/coming-soon" style={linkStyle}>LOGIN</Link></li>
+          <ul style={desktopNavStyle} role="menu">
+            <li role="menuitem"><Link to="/" style={linkStyle}>HOME</Link></li>
+            <li role="menuitem"><Link to="/coming-soon" style={linkStyle}>ABOUT</Link></li>
+            <li role="menuitem"><Link to="/coming-soon" style={linkStyle}>MENU</Link></li>
+            <li role="menuitem"><Link to="/reservation" style={linkStyle}>RESERVATIONS</Link></li>
+            <li role="menuitem"><Link to="/coming-soon" style={linkStyle}>ORDER ONLINE</Link></li>
+            <li role="menuitem"><Link to="/coming-soon" style={linkStyle}>LOGIN</Link></li>
           </ul>
         )}
       </nav>

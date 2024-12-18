@@ -28,7 +28,8 @@ function Highlights() {
 
   const imageStyle = {
     width: '100%',
-    height: '15vh',        // Set the height to the max height
+    maxHeight: '15vh',
+    objectFit: 'cover',
     marginBottom: '10px',
     borderRadius: '8px',
   };

@@ -23,11 +23,12 @@ function Testimonials() {
     borderRadius: '8px',
     width: '250px',
     boxSizing: 'border-box',
+    marginBottom: '20px',
   };
 
   const imageStyle = {
-    width: '40px',
-    height: '40px',
+    width: '50px',
+    height: '50px',
     borderRadius: '50%',
     objectFit: 'cover',
     marginBottom: '15px',

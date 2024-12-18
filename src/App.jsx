@@ -7,7 +7,7 @@ import ComingSoon from './pages/ComingSoon';
 import { BrowserRouter, Routes, Route } from "react-router";
 import './App.css';
 
-import { fetchAPI } from './api/api'
+import { fetchAPI } from './api/api';
 import ConfirmedBooking from './pages/ConfirmedBooking';
 
 export const availableTimesReducer = (state, action) => {
@@ -21,7 +21,7 @@ export const availableTimesReducer = (state, action) => {
 
 export const initializeTimes = () => {
   return fetchAPI(new Date());
-}
+};
 
 const appStyle = {
   display: 'flex',
@@ -44,15 +44,20 @@ const App = () => {
     <BrowserRouter>
       <div style={appStyle}>
         <Header />
-        <main style={mainStyle}>
+        <main style={mainStyle} role="main">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route
               path="reservation"
-              element={<Reservation availableTimes={availableTimes} updateTimes={(date) => updateTimes(dispatch, date)} />}
+              element={
+                <Reservation
+                  availableTimes={availableTimes}
+                  updateTimes={(date) => updateTimes(dispatch, date)}
+                />
+              }
             />
             <Route path="coming-soon" element={<ComingSoon />} />
-            <Route path="confirmed-booking" element={<ConfirmedBooking/>}/>
+            <Route path="confirmed-booking" element={<ConfirmedBooking />} />
           </Routes>
         </main>
         <Footer />

@@ -21,7 +21,7 @@ const logoContainerStyle = {
 
 const linkStyle = {
   textDecoration: 'none',
-  color: 'black',
+  color: 'blue',
   whiteSpace: 'nowrap',
 };
 
@@ -34,19 +34,21 @@ const ulStyle = {
 
 const imgStyle = {
   width: '15vw',
-  minWidth:'200px',
+  minWidth: '200px',
   height: 'auto',
 };
 
 const Footer = () => {
   return (
     <footer style={footerStyle}>
+      {/* Logo Section */}
       <div style={logoContainerStyle}>
-        <img src={Logo} alt="company-logo" style={imgStyle} />
+        <img src={Logo} alt="Little Lemon Company Logo" style={imgStyle} />
       </div>
 
-      <div style={sectionStyle}>
-        <h3>Important Links</h3>
+      {/* Navigation Section */}
+      <section style={sectionStyle} aria-labelledby="important-links-heading">
+        <h3 id="important-links-heading">Important Links</h3>
         <ul style={ulStyle}>
           <li>
             <Link to="/" style={linkStyle}>HOME</Link>
@@ -64,11 +66,11 @@ const Footer = () => {
             <Link to="/coming-soon" style={linkStyle}>LOGIN</Link>
           </li>
         </ul>
-      </div>
+      </section>
 
       {/* Contact Us Section */}
-      <div style={sectionStyle}>
-        <h3>Contact Us</h3>
+      <section style={sectionStyle} aria-labelledby="contact-us-heading">
+        <h3 id="contact-us-heading">Contact Us</h3>
         <ul style={ulStyle}>
           <li>
             <span>Address:</span> <br />
@@ -76,30 +78,30 @@ const Footer = () => {
           </li>
           <li>
             <span>Phone:</span> <br />
-            <span>  +000000000</span>
+            <span>+000000000</span>
           </li>
           <li>
             <span>Email:</span> <br />
-            <span>  abc@gmail.com</span>
+            <span>abc@gmail.com</span>
           </li>
         </ul>
-      </div>
+      </section>
 
       {/* Social Links Section */}
-      <div style={sectionStyle}>
-        <h3>Social Links</h3>
+      <section style={sectionStyle} aria-labelledby="social-links-heading">
+        <h3 id="social-links-heading">Social Links</h3>
         <ul style={ulStyle}>
           <li>
-            <a href="/" style={linkStyle}>Facebook</a>
+            <a href="/" style={linkStyle} target="_blank" rel="noopener noreferrer">Facebook</a>
           </li>
           <li>
-            <a href="/" style={linkStyle}>Instagram</a>
+            <a href="/" style={linkStyle} target="_blank" rel="noopener noreferrer">Instagram</a>
           </li>
           <li>
-            <a href="/" style={linkStyle}>YouTube</a>
+            <a href="/" style={linkStyle} target="_blank" rel="noopener noreferrer">YouTube</a>
           </li>
         </ul>
-      </div>
+      </section>
     </footer>
   );
 };

@@ -7,7 +7,7 @@ const ComingSoon = () => {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '40vh',
+    minHeight: '40vh',
     textAlign: 'center',
     padding: '20px',
   };
@@ -15,6 +15,7 @@ const ComingSoon = () => {
   const headingStyle = {
     fontSize: '10vh',
     marginBottom: '20px',
+    wordWrap: 'break-word',
   };
 
   const paragraphStyle = {
@@ -25,7 +26,7 @@ const ComingSoon = () => {
 
   const buttonStyle = {
     margin: '30px',
-    padding: '5px 20px',
+    padding: '10px 30px',
     fontSize: '2rem',
     border: 'none',
     cursor: 'pointer',
@@ -41,10 +42,8 @@ const ComingSoon = () => {
     <div style={containerStyle}>
       <h1 style={headingStyle}>Coming Soon!</h1>
       <p style={paragraphStyle}>This page is under development. Stay tuned!</p>
-      <Link to="/">
-          <button aria-label="Reserve a table" style={buttonStyle}>Back to Home</button>
-        </Link>
-    </div>
+      <Link to="/" style={buttonStyle}>Back to Home</Link>
+      </div>
   );
 };
 

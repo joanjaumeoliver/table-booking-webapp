@@ -4,18 +4,16 @@ import { Link } from 'react-router';
 const ConfirmedBooking = () => {
   return (
     <div style={containerStyle}>
-    <h1 style={headingStyle}>Your booking has been confirmed!</h1>
-    <p style={paragraphStyle}>Thank you for booking with us. We look forward to your visit.</p>
-    <Link to="/">
-          <button aria-label="Reserve a table" style={buttonStyle}>Back to Home</button>
-        </Link>
-  </div>
+      <h1 style={headingStyle}>Your booking has been confirmed!</h1>
+      <p style={paragraphStyle}>Thank you for booking with us. We look forward to your visit.</p>
+      <Link to="/" style={buttonStyle}>Back to Home</Link>
+    </div>
   );
 };
 
 const buttonStyle = {
   margin: '30px',
-  padding: '5px 20px',
+  padding: '10px 30px',
   fontSize: '2rem',
   border: 'none',
   cursor: 'pointer',
@@ -32,7 +30,7 @@ const containerStyle = {
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  height: '40vh',
+  minHeight: '40vh',
   textAlign: 'center',
   padding: '20px',
 };
@@ -40,6 +38,7 @@ const containerStyle = {
 const headingStyle = {
   fontSize: '10vh',
   marginBottom: '20px',
+  wordWrap: 'break-word',
 };
 
 const paragraphStyle = {

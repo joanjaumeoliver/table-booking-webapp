@@ -8,10 +8,21 @@ import About from '../components/About';
 function Home() {
   return (
     <>
-        <Hero/>
+      <section aria-labelledby="hero-section">
+        <Hero />
+      </section>
+
+      <section aria-labelledby="highlights-section">
         <Highlights />
+      </section>
+
+      <section aria-labelledby="testimonials-section">
         <Testimonials />
+      </section>
+
+      <section aria-labelledby="about-section">
         <About />
+      </section>
     </>
   );
 }
