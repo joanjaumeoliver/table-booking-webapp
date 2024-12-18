@@ -133,7 +133,6 @@ const formStyleValid = {
 };
 
 const labelStyle = {
-  marginBottom: '8px',
   fontSize: '1.5rem',
   fontWeight: '500',
 };
